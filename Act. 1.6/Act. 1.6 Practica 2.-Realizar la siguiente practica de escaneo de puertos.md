@@ -1,7 +1,8 @@
 # Act. 1.6 Practica 2.-Realizar la siguiente practica de escaneo de puertos.
 
 ## Carpeta de Github.
-aaa
+
+https://github.com/Gilberto-Guzman/Analisis-de-Vulnerabilidades/tree/main/Act.%201.6
 
 ## ¿Qué es nmap?
 
