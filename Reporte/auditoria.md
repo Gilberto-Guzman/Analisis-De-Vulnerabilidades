@@ -21,8 +21,7 @@
 
 </center>
 
-
-# Utilizar todas las herramientas y realizar un reporte de auditoria de los ataques a los servidores web y bd en un VPS.
+<div style="page-break-after: always;"></div>
 
 # https://freshcoffe.shop/ ➡ Cayo con Slow HTTP Test.
 
