@@ -397,3 +397,109 @@
     sudo snap install --classic certbot
     sudo ln -s /snap/bin/certbot /usr/bin/certbot
     sudo certbot --apache
+
+    sudo apt install python3-pip
+    sudo apt install python3-requests
+    cd /home/
+
+    sudo nano programa1.py
+
+    import re
+    from collections import Counter
+    import socket
+    import platform
+    import getpass
+    import requests  # Puede que necesites instalar la librería 'requests'
+
+    def extract_public_ips(log_file_path):
+        ip_regex = re.compile(r'\d+\.\d+\.\d+\.\d+')
+
+        with open(log_file_path, 'r') as log_file:
+            ip_addresses = [re.search(ip_regex, line).group() for line in log_file if 'GET' in line]
+
+        return ip_addresses
+
+    def resolve_hostnames(ip_addresses):
+        hostnames = {}
+        for ip in ip_addresses:
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except socket.herror:
+                # No se pudo resolver el nombre para esta IP
+                hostnames[ip] = "Unknown"
+
+        return hostnames
+
+    def get_os_information():
+        os_info = platform.system() + " " + platform.version()
+        return os_info
+
+    def get_local_ip():
+        local_ip = socket.gethostbyname(socket.gethostname())
+        return local_ip
+
+    def get_username():
+        username = getpass.getuser()
+        return username
+
+    def get_location(ip):
+        try:
+            response = requests.get(f"http://ipinfo.io/{ip}/json")
+            data = response.json()
+            location = data.get('city', 'Unknown') + ', ' + data.get('region', 'Unknown') + ', ' + data.get('country', 'Unknown')
+            return location
+        except requests.RequestException as e:
+            print(f"Error obteniendo la ubicación para la IP {ip}: {e}")
+            return "Unknown"
+
+    def count_ips(ip_addresses):
+        ip_counter = Counter(ip_addresses)
+        return ip_counter
+
+    if __name__ == "__main__":
+        apache_log_file = '/var/log/apache2/access.log'
+
+        public_ips = extract_public_ips(apache_log_file)
+        hostnames = resolve_hostnames(public_ips)
+        ip_counter = count_ips(public_ips)
+        os_info = get_os_information()
+        local_ip = get_local_ip()
+        username = get_username()
+
+        print("Información del Sistema Operativo:", os_info)
+        print("Dirección IP Local:", local_ip)
+        print("Nombre de Usuario:", username)
+        print("\nDirecciones IP públicas conectadas al sitio web Apache 2:")
+        for ip, count in ip_counter.items():
+            hostname = hostnames[ip]
+            location = get_location(ip)
+            print(f"{ip} ({hostname}): {count} conexiones, Ubicación: {location}")
+
+    python3 programa2.py
+
+    import requests
+
+    def get_ip_info(ip):
+        url = f"http://ipinfo.io/{ip}/json"
+        response = requests.get(url)
+        
+        if response.status_code == 200:
+            ip_data = response.json()
+            print("IP Address:", ip_data.get('ip'))
+            print("Hostname:", ip_data.get('hostname'))
+            print("City:", ip_data.get('city'))
+            print("Region:", ip_data.get('region'))
+            print("Country:", ip_data.get('country'))
+            print("Location:", ip_data.get('loc'))
+            print("Organization:", ip_data.get('org'))
+        else:
+            print("Unable to fetch IP information.")
+
+    if __name__ == "__main__":
+        user_ip = input("Enter the public IP address to check: ")
+        get_ip_info(user_ip)
+
+    
+    python3 programa1.py
+    python3 programa2.py
