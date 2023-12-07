@@ -1,0 +1,130 @@
+    1  ls
+    2  sudo apt update && sudo apt upgrade -y
+    3  sudo apt -y install apache2 mariadb-server php php-mysqli php-gd libapache2-mod-php
+    4  sudo mysql
+    5  cd /var/www/html
+    6  sudo git clone https://github.com/digininja/DVWA.git
+    7  sudo apt install git
+    8  sudo git clone https://github.com/digininja/DVWA.git
+    9  ls
+   10  sudo mv DVWA dvwa
+   11  ls
+   12  sudo chown -P www-data:www-data /var/www/html/*
+   13  sudo cp /var/www/html/dvwa/config/config.inc.php.dist /var/www/html/dvwa/config/config.inc.php
+   14  cd dvwa
+   15  ls
+   16  cd config
+   17  ls
+   18  sudo nano config.inc.php
+   19  sudo systemctl restart apache2
+   20  sudo systemctl restart mysql
+   21  localhost/dvwa
+   22  ip addr
+   23  sudo apt install libapache2-mod-security2
+   24  sudo a2enmod security2
+   25  sudo nano /etc/modsecurity/modsecurity.conf
+   26  sudo apt install libapache2-mod-security2
+   27  sudo a2enmod security2
+   28  sudo nano /etc/modsecurity/modsecurity.conf
+   29  sudo nano /etc/apache2/mods-available/security2.conf
+   30  cd /etc/modsecurity/
+   31  ls
+   32  sudo nano modsecurity.conf-recommended
+   33  code .
+   34  exir
+   35  exit
+   36  cd /etc/modsecurity
+   37  sudo git clone https://github.com/SpiderLabs/owasp-modsecurity-crs.git
+   38  sudo mv owasp-modsecurity-crs/crs-setup.conf.example owasp-modsecurity-crs/crs-setup.conf
+   39  ls
+   40  code .
+   41  sudo code .
+   42  code .
+   43  exit
+   44  cd /etc/modsecurity
+   45  ls
+   46  code .
+   47  sudo mv owasp-modsecurity-crs/crs-setup.conf.example owasp-modsecurity-crs/crs-setup.conf
+   48  sudo nano /etc/modsecurity/modsecurity.conf
+   49  sudo nano /etc/modsecurity/modsecurity.conf-recommended
+   50  sudo nano /etc/modsecurity/modsecurity.conf
+   51  sudo service apache2 restart
+   52  systemctl status apache2.service
+   53  sudo nano /etc/modsecurity/modsecurity.conf
+   54  cd /etc/modsecurity
+   55  sudo git clone https://github.com/SpiderLabs/owasp-modsecurity-crs.git
+   56  sudo mv owasp-modsecurity-crs/crs-setup.conf.example owasp-modsecurity-crs/crs-setup.conf
+   57  cd /etc/modsecurity
+   58  sudo mv owasp-modsecurity-crs/crs-setup.conf.example owasp-modsecurity-crs/crs-setup.conf
+   59  sudo nano /etc/modsecurity/modsecurity.conf
+   60  exit
+   61  cd /etc/apache2/sites-available/
+   62  sudo nano 000-default.conf
+   63  sudo a2dissite 000-default.conf
+   64  systemctl reload apache2
+   65  # Act. 3.3 Practica WAF AL DVWA INTALAR CERTIFICADO DE HTTP A HTTPS.- 50%
+   66  ### Configuración del WAF.
+   67  sudo a2dissite 000-default.conf
+   68  cd /etc/apache2/sites-available/
+   69  sudo a2dissite 000-default.conf
+   70  systemctl reload apache2
+   71  sudo systemctl restart apache2
+   72  sudo systemctl status apache2
+   73  sudo systemctl restart apache2
+   74  sudo systemctl status apache2
+   75  cd /etc
+   76  sudo nano hosts
+   77  ip addr
+   78  cd /etc/apache2
+   79  sudo nano apache2.conf
+   80  exit
+   81  ip addr
+   82  sudo apt update
+   83  sudo ufw allow "Apache Full"
+   84  sudo a2enmod ssl
+   85  sudo systemctl restart apache2
+   86  sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+   87  sudo nano /etc/apache2/sites-available/srv.world.conf
+   88  cd /etc/apache2/sites-available/
+   89  ls
+   90  sudo nano /etc/apache2/sites-available/srv.world.conf
+   91  ls
+   92  sudo nano /etc/apache2/sites-available/000-default.conf
+   93  sudo mkdir /var/www/html
+   94  sudo apache2ctl configtest
+   95  sudo systemctl reload apache2
+   96  sudo ufw allow "Apache Full"
+   97  sudo nano /etc/apache2/sites-available/000-default.conf
+   98  sudo apachectl configtest
+   99  sudo systemctl reload apache2 
+  100  code .
+  101  cd etc/ssl/private/
+  102  cd etc/ssl/private/
+  103  sudo nano /etc/apache2/sites-available/000-default.conf
+  104  cd /var/www/html/
+  105  ls
+  106  sudo systemctl restart apache2
+  107  cd /etc/apache2/sites-available
+  108  ls
+  109  sudo a2ensite default-ssl.conf
+  110  systemctl reload apache2
+  111  sudo apachectl configtest
+  112  ls
+  113  sudo mkdir /var/www/html
+  114  sudo a2ensite default-ssl.conf
+  115  cd /etc/apache2/sites-available
+  116  ls
+  117  code .
+  118  exit
+  119  ip addr
+  120  cd /etc/apache2/sites-available
+  121  sudo a2ensite default-ssl.conf
+  122  code .
+  123  ip addr
+  124  cd /etc/apache2/sites-available
+  125  sudo a2ensite default-ssl.conf
+  126  code .
+  127  exit
+  128  ip addr
+  129  history
+  130  sudo apt-get install libapache2-mod-evasive
